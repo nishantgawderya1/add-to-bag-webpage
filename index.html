@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Bag</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .addtobag {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 20px;
+        }
+
+        .product-container {
+            display: flex;
+            gap: 20px;
+            width: 70%;
+        }
+
+        .productangle {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 80px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: transform 0.2s ease;
+        }
+
+        .thumbnail.active {
+            border-color: #007bff;
+            transform: scale(1.1);
+        }
+
+        .productimage {
+            flex: 3;
+        }
+
+        .productimage img {
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .productinfo {
+            flex: 2;
+        }
+
+        .productinfo h1 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .price {
+            color: #e91e63;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 18px;
+        }
+
+        .size-selector button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .size-selector button.selected {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .add-to-bag {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .add-to-bag:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="addtobag">
+        <div class="product-container">
+            <div class="productangle">
+                <img src="img1.png" alt="main image view-shirt black" class="thumbnail">
+                <img src="img2.png" alt="Front view" class="thumbnail">
+                <img src="img3.png" alt="Back view" class="thumbnail">
+                <img src="img4.png" alt="Detail view" class="thumbnail">
+                <img src="img5.png" alt="Color option" class="thumbnail">
+            </div>
+            <div class="productimage">
+                <img src="img1.png" alt="main image view-shirt black" class="main-image">
+            </div>
+        </div>
+        <div class="productinfo">
+            <h1 style="color: #007bff;">POLO RALPH</h1>
+            <h1>Custom Fit Polo Bear Oxford Shirt</h1>
+            <p>Classic cut, made of smooth and soft cotton</p>
+            <div class="price">$ 99.00</div>
+            <div class="original-price"><s>$ 132.00</s></div>
+            <div class="size-selector">
+                <h3>CHOOSE SIZE</h3>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+                <button class="size-btn">XXL</button>
+            </div>
+            <button class="add-to-bag">ADD TO BAG</button>
+        </div>
+    </div>
+
+    <script>
+        const mainImage = document.querySelector('.main-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Remove active class from all thumbnails
+                thumbnails.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked thumbnail
+                thumb.classList.add('active');
+                // Update main image
+                mainImage.src = thumb.src;
+            });
+        });
+    </script>
+</body>
+</html>
